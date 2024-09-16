@@ -23,13 +23,13 @@ public class CommandManager {
         commandList.put("save", new SaveCSVCommand());
         commandList.put("execute_script", new ExecuteScriptCommand());
         commandList.put("exit", new ExitCommand());
-        commandList.put("remove_greater", new RemoveLowerCommand());
+        commandList.put("remove_lower ", new RemoveLowerCommand());
         commandList.put("history", new HistoryCommand());
-        commandList.put("replace_if_grater", new ReplaceIfGraterCommand());
+        commandList.put("replace_if_greater", new ReplaceIfGraterCommand());
         commandList.put("remove_lower_key ", new RemoveLowerKeyCommand());
         commandList.put("min_by_id", new ShowMinByIdCommand());
-        commandList.put("count_greater_than_status ", new CountGreaterThanStatusCommand());
-        commandList.put("print_unique_salary  ", new PrintUniqueSalary());
+        commandList.put("count_greater_than_status", new CountGreaterThanStatusCommand());
+        commandList.put("print_unique_salary", new PrintUniqueSalary());
     }
 
     public static void startExecuting(String line) throws Exception {
