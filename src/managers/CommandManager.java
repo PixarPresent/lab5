@@ -6,7 +6,13 @@ import managers.commands.*;
 import java.util.ArrayDeque;
 import java.util.LinkedHashMap;
 
-
+/**
+ * Данный класс обеспечивает связь между командами и CollectionManager
+ *
+ * @author Konstantin
+ * @see CollectionManager
+ * @since 1.0
+ */
 public class CommandManager {
     private static LinkedHashMap<String, BaseCommand> commandList;
     public static ArrayDeque<BaseCommand> lastSixCommand = new ArrayDeque<>();

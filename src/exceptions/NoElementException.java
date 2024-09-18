@@ -1,7 +1,13 @@
 package exceptions;
 
 import system.TextColor;
-
+/**
+ * Обеспечивает исключение, если не существует элемента в коллекции
+ *
+ * @see managers.CollectionManager
+ * @author Konstantin
+ * @since 1.0
+ */
 public class NoElementException extends Exception{
 
     public NoElementException(String key){

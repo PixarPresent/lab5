@@ -14,8 +14,19 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * Данный класс выполняет чтение данных, которые хранятся в формате CSV
+ *
+ * @author Konstantin
+ * @since 1.0
+ */
 public class ReaderCSV {
+    /**
+     * Читает данные из файла в коллекцию
+     *
+     * @param path путь до файла
+     * @see CollectionManager
+     */
     public static void read(String path) throws RootException, ReadFileException {
         File file = new File(path);
         if (!file.canRead()) {

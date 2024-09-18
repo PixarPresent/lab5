@@ -3,7 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
-
+/**
+ * Данная команда очищает коллекцию
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class ClearCommand implements BaseCommand {
 
     @Override

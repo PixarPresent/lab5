@@ -3,6 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
+/**
+ * Данная команда выводит уникальные значения поля salary всех элементов в коллекции
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class PrintUniqueSalary implements BaseCommand{
     @Override
     public void execute(String[] args) throws Exception {

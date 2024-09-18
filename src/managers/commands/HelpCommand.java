@@ -3,6 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
+/**
+ * Данная команда выводит описание всех команд
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class HelpCommand implements BaseCommand{
     @Override
     public void execute(String[] args) throws Exception{

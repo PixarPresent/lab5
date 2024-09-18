@@ -3,6 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
+/**
+ * Данная команда выводит количество элементов, значение поля status которых больше заданного
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class CountGreaterThanStatusCommand implements BaseCommand{
     @Override
     public void execute(String[] args) throws Exception {

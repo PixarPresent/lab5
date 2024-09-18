@@ -5,7 +5,13 @@ import exceptions.NoElementException;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
-
+/**
+ * Данная команда удаляет из коллекции все элементы, превышающие заданный
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class RemoveLowerCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws WrongArgumentException, BuildOrganizationException, NoElementException {

@@ -3,7 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
-
+/**
+ * Данная команда выводит последние 6 команд без ключей
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class HistoryCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws Exception {

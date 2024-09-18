@@ -10,9 +10,19 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 
-
+/**
+ * Данный класс выполняет запись данных, которые хранятся в формате XML
+ *
+ * @author Konstantin
+ * @since 1.0
+ */
 public class WriterCSV{
-
+    /**
+     * Записывает данные коллекции в файл
+     *
+     * @see CollectionManager
+     * @param path путь до файла
+     */
     public static void write(String path) throws IOException, RootException {
         File file = new File(path);
 

@@ -3,7 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
-
+/**
+ * Данная команда выводит элемент с минимальным ID
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class ShowMinByIdCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws Exception {

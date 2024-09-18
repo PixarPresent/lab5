@@ -1,10 +1,19 @@
 package system;
 
 import managers.Console;
-
 import java.io.File;
 
+/**
+ * Главный класс, который запускает программу.
+ * Требуется сохранить путь до CSV файла в переменную окружения
+ *
+ * @author Konstantin
+ * @since 1.0
+ */
 public class Main {
+    /**
+     * Точка начала программы.
+     */
     public static void main(String[] args) {
         String path = "C:\\Users\\kosty\\IdeaProjects\\project_lab_5\\src\\system\\data.csv";
         if (path == null){

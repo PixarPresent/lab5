@@ -3,7 +3,13 @@ package managers.commands;
 
 import exceptions.WrongArgumentException;
 
-
+/**
+ * Данная команда завершает программу без сохранения коллекции
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class ExitCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws Exception {

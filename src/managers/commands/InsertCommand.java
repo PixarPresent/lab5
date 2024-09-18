@@ -4,6 +4,14 @@ import exceptions.WrongArgumentException;
 import managers.Reciewer;
 import system.TextColor;
 
+/**
+ * Данная команда добавляет новый элемент по ключу
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @see recources.Worker
+ * @since 1.0
+ */
 public class InsertCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws WrongArgumentException {

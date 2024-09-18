@@ -3,6 +3,13 @@ package managers.commands;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
+/**
+ * Данная команда удаляет из коллекции элемент по ключу
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class RemoveCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws WrongArgumentException {

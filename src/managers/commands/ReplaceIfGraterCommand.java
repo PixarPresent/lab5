@@ -5,7 +5,13 @@ import exceptions.NoElementException;
 import exceptions.WrongArgumentException;
 import managers.Reciewer;
 
-
+/**
+ * Данная команда заменяет значение по ключу, если новое значение больше старого
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class ReplaceIfGraterCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws WrongArgumentException, BuildOrganizationException, NoElementException {

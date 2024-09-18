@@ -2,7 +2,13 @@ package managers.commands;
 
 import managers.Reciewer;
 
-
+/**
+ * Данная команда исполняет скрипт из файла
+ *
+ * @author Konstantin
+ * @see BaseCommand
+ * @since 1.0
+ */
 public class ExecuteScriptCommand implements BaseCommand {
 
     @Override
