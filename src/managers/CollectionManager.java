@@ -17,7 +17,6 @@ import java.util.LinkedHashMap;
  * @since 1.0
  */
 public class CollectionManager {
-    private static CollectionManager instance;
     private static LinkedHashMap<String, Worker> table = new LinkedHashMap<>();
     private static LocalDate date;
 
@@ -29,20 +28,13 @@ public class CollectionManager {
         date = LocalDate.now();
     }
 
-    public static synchronized CollectionManager getInstance() {
-        if (instance == null) {
-            instance = new CollectionManager();
-        }
-        return instance;
-    }
-
     /**
      * Получить дату инициализации коллекции
      *
      * @return дата инициализации
      */
     public static LocalDate getInitDate() {
-        return date;
+        return date.now();
     }
 
 

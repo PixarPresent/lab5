@@ -22,11 +22,11 @@ public class RemoveLowerKeyCommand implements BaseCommand{
 
     @Override
     public String getName() {
-        return null;
+        return "remove_lower_key {key}";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "remove all items from the collection whose key is less than the specified one";
     }
 }

@@ -23,7 +23,7 @@ public class InsertCommand implements BaseCommand {
 
     @Override
     public String getName() {
-        return "insert null {element}";
+        return "insert {element}";
     }
 
     @Override

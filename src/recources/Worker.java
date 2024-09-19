@@ -36,14 +36,14 @@ public class Worker implements Comparable<Worker>{
         return "Worker{" +
                 "id=" + id +
                 ", name=" + name +
-                ", coordinates=" + coordinates +
+                ", " + coordinates +
                 ", creationDate=" + creationDate +
                 ", salary=" + salary +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", status=" + status +
-                ", organization=" + organization +
-                '}';
+                ", " + organization
+                ;
     }
 
     public String toCSV() {
@@ -56,8 +56,7 @@ public class Worker implements Comparable<Worker>{
                 ";" + startDate +
                 ";" + LocalDate.of(endDate.getYear(), endDate.getMonth().getValue(), endDate.getDayOfMonth()) +
                 ";" + status +
-                ";" + organization.getAnnualTurnover() +
-                ";" + organization.getType() + ";";
+                ";" + organization + ";";
     }
 
     public int getId() {

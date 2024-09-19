@@ -24,7 +24,7 @@ public class RemoveLowerCommand implements BaseCommand {
 
     @Override
     public String getName() {
-        return "remove_grater {element}";
+        return "remove_greater {key}";
     }
 
     @Override

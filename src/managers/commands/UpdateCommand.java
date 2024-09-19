@@ -22,7 +22,7 @@ public class UpdateCommand implements BaseCommand {
 
     @Override
     public String getName() {
-        return "update id {element}";
+        return "update {element}";
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Main {
      * Точка начала программы.
      */
     public static void main(String[] args) {
-        String path = "C:\\Users\\kosty\\IdeaProjects\\project_lab_5\\src\\system\\data.csv";
+        String path = "C:\\Users\\kosty\\IdeaProjects\\lab5\\src\\system\\data.csv";
         if (path == null){
             System.out.println(TextColor.ANSI_RED + "Something wrong (no environment variable)" + TextColor.ANSI_RESET);
         }

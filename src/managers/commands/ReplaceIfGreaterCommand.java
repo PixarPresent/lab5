@@ -12,7 +12,7 @@ import managers.Reciewer;
  * @see BaseCommand
  * @since 1.0
  */
-public class ReplaceIfGraterCommand implements BaseCommand {
+public class ReplaceIfGreaterCommand implements BaseCommand {
     @Override
     public void execute(String[] args) throws WrongArgumentException, BuildOrganizationException, NoElementException {
         if (args.length == 2) {
@@ -24,11 +24,11 @@ public class ReplaceIfGraterCommand implements BaseCommand {
 
     @Override
     public String getName() {
-        return "replace_if_greater";
+        return "replace_if_greater {key}";
     }
 
     @Override
     public String getDescription() {
-        return "null {element} - update element by key if new bigger than element in collection with the same key";
+        return "update element by key if new bigger than element in collection with the same key";
     }
 }

@@ -22,7 +22,7 @@ public class RemoveCommand implements BaseCommand {
 
     @Override
     public String getName() {
-        return "remove_key null";
+        return "remove_key {key}";
     }
 
     @Override
