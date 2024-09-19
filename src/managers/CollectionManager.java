@@ -18,7 +18,7 @@ import java.util.LinkedHashMap;
  */
 public class CollectionManager {
     private static LinkedHashMap<String, Worker> table = new LinkedHashMap<>();
-    private static LocalDate date;
+    private static LocalDate date = LocalDate.now();
 
     /**
      * Базовый конструктор
@@ -34,7 +34,7 @@ public class CollectionManager {
      * @return дата инициализации
      */
     public static LocalDate getInitDate() {
-        return date.now();
+        return date;
     }
 
 

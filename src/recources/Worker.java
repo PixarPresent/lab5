@@ -29,6 +29,7 @@ public class Worker implements Comparable<Worker>{
     }
     public Worker(){
         this.id = IdGenerator.generateId();
+        this.creationDate = ZonedDateTime.now();
     }
 
     @Override

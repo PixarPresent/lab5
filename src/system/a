@@ -1,4 +1,4 @@
-insert gg
+insert hh
 Stas
 4
 4
@@ -9,7 +9,7 @@ FIRED
 90
 COMMERCIAL
 info
-replace_if_greater gg
+replace_if_grater gg
 Stas
 4
 4
@@ -19,4 +19,4 @@ Stas
 FIRED
 90
 COMMERCIAL
-info
+show

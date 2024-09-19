@@ -45,8 +45,32 @@ public class Reciewer {
         }
     }
 
+    public static void updateById(String arg, Worker worker) throws NoElementException {
+        System.out.println("Start executing command...");
 
-    public static void showMinById(){
+        boolean elementInCollection = false;
+        int id = Integer.parseInt(arg);
+
+        for (String k : CollectionManager.getTable().keySet()) {
+            if (CollectionManager.getTable().get(k).getId() == id) {
+                System.out.println(TextColor.ANSI_BLUE + "Updating element with id " + id + TextColor.ANSI_RESET);
+                elementInCollection = true;
+
+                worker.setId(id);
+                worker.setCreationDate(ZonedDateTime.now());
+                CollectionManager.remove(k);
+                CollectionManager.add(k, worker);
+
+                System.out.println(TextColor.ANSI_BLUE + "Element was updated" + TextColor.ANSI_RESET);
+            }
+        }
+        if (!elementInCollection) {
+            throw new NoElementException(String.valueOf(id));
+        }
+    }
+
+
+    public static void showMinById() {
         Worker worker = null;
         LinkedHashMap<String, Worker> table = CollectionManager.getTable();
         for (String key : table.keySet()) {
@@ -66,13 +90,13 @@ public class Reciewer {
         int count = 0;
         for (String key : table.keySet()) {
             if (status.compareTo(table.get(key).getStatus()) > 0) {
-                count ++;
+                count++;
             }
         }
         System.out.println(count);
     }
 
-    public static void showCommand(){
+    public static void showCommand() {
         LinkedHashMap<String, Worker> table = CollectionManager.getTable();
         for (String x : table.keySet()) {
             System.out.println("Key:" + x + "\t" + table.get(x));
@@ -102,6 +126,21 @@ public class Reciewer {
         }
     }
 
+
+    public static void replaceIfGrater(String key, Worker worker) throws NoElementException {
+        LinkedHashMap<String, Worker> table = CollectionManager.getTable();
+        WorkerComparator c1 = new WorkerComparator();
+        if (table.containsKey(key)) {
+            if (c1.compare(worker, table.get(key)) > 0) {
+                CollectionManager.remove(key);
+                CollectionManager.add(key, worker);
+            }
+        } else {
+            System.out.println("No element with key " + key);
+        }
+    }
+
+
     public static void removeLower() throws WrongArgumentException, BuildOrganizationException, NoElementException {
         Worker worker = WorkerGenerator.createWorker();
         LinkedHashMap<String, Worker> table = CollectionManager.getTable();
@@ -119,7 +158,27 @@ public class Reciewer {
         for (String key : keySet) {
             CollectionManager.remove(key);
         }
-        if (k == CollectionManager.getTable().size()){
+        if (k == CollectionManager.getTable().size()) {
+            System.out.println("Nothing was changed");
+        }
+    }
+
+    public static void removeLower(Worker worker) throws NoElementException {
+        LinkedHashMap<String, Worker> table = CollectionManager.getTable();
+
+        WorkerComparator c1 = new WorkerComparator();
+        ArrayList<String> keySet = new ArrayList<>();
+
+        for (String key : table.keySet()) {
+            if (c1.compare(worker, table.get(key)) < 0) {
+                keySet.add(key);
+            }
+        }
+        int k = keySet.size();
+        for (String key : keySet) {
+            CollectionManager.remove(key);
+        }
+        if (k == CollectionManager.getTable().size()) {
             System.out.println("Nothing was changed");
         }
     }
@@ -137,11 +196,10 @@ public class Reciewer {
         for (String k2 : keySet) {
             CollectionManager.remove(k2);
         }
-        if (k == CollectionManager.getTable().size()){
+        if (k == CollectionManager.getTable().size()) {
             System.out.println("Nothing was changed");
         }
     }
-
 
 
     public static void removeByKey(String key) {
@@ -155,22 +213,22 @@ public class Reciewer {
         }
     }
 
-    public static void printUniqueSalary(){
+    public static void printUniqueSalary() {
         LinkedHashMap<String, Worker> table = CollectionManager.getTable();
         Set<Long> salarySet = new HashSet<>();
 
-        for (String key: table.keySet()) {
+        for (String key : table.keySet()) {
             salarySet.add(table.get(key).getSalary());
         }
-        for (long salary:salarySet){
+        for (long salary : salarySet) {
             System.out.print(salary + " ");
         }
         System.out.println();
     }
 
-    public static void insertNew(String key){
+    public static void insertNew(String key) {
         try {
-            if (CollectionManager.getTable().containsKey(key)){
+            if (CollectionManager.getTable().containsKey(key)) {
                 System.out.println("This key is already used");
                 return;
             }
@@ -185,13 +243,24 @@ public class Reciewer {
         }
     }
 
-    public static void showInfo(){
+
+    public static void insertNew(String key, Worker worker) {
+        if (CollectionManager.getTable().containsKey(key)) {
+            System.out.println("This key is already used");
+            return;
+        }
+        CollectionManager.add(key, worker);
+        System.out.println(TextColor.ANSI_BLUE + "Element was added" + TextColor.ANSI_RESET);
+    }
+
+
+    public static void showInfo() {
         System.out.println("Data type - " + CollectionManager.getTable().getClass().getName());
         System.out.println("Count of organization - " + CollectionManager.getTable().keySet().size());
         System.out.println("Init date - " + CollectionManager.getInitDate());
     }
 
-    public static void showHistory(){
+    public static void showHistory() {
         String[] sp = new String[6];
         int n = 0;
         for (BaseCommand command : CommandManager.lastSixCommand) {
@@ -205,9 +274,9 @@ public class Reciewer {
         }
     }
 
-    public static void showHelp(){
+    public static void showHelp() {
         LinkedHashMap<String, BaseCommand> commandList = CommandManager.getCommandList();
-        for (String name: commandList.keySet()){
+        for (String name : commandList.keySet()) {
             BaseCommand command = commandList.get(name);
             System.out.println(TextColor.ANSI_BLUE + command.getName() + TextColor.ANSI_RESET + " - " + command.getDescription());
         }
@@ -216,7 +285,8 @@ public class Reciewer {
     public static void executeScript(String path) throws Exception {
         File file = new File(path);
         if (!file.canRead()) {
-            throw new RootException("You do not have enough rights to read the file");
+            System.out.println("You do not have enough rights to read the file");
+            return;
         }
         if (st.isEmpty()) {
             st.add(file);
@@ -227,7 +297,9 @@ public class Reciewer {
         String line;
         String[] sp = new String[10];
         while ((line = br.readLine()) != null) {
-            if (line.split(" ")[0].equals("insert")) {
+            String command = line.split(" ")[0];
+            if (command.equals("insert") || command.contains("remove_lower") || command.contains("replace_if_grater")
+                    || command.contains("remove_grater") || command.contains("update")) {
                 String key = line.split(" ")[1];
                 for (int n = 0; n < 9; n++) {
                     if ((line = br.readLine()) != null) {
@@ -263,20 +335,47 @@ public class Reciewer {
                 og.setType(OrganizationType.valueOf(sp[8]));
                 worker.setOrganization(og);
 
-                CollectionManager.add(key, worker);
+                Reciewer.insertNew(key, worker);
+                switch (command) {
+                    case "insert":
+                        CollectionManager.add(key, worker);
+                        break;
+                    case "remove_lower":
+                        Reciewer.removeLower(worker);
+                        break;
+                    case "replace_if_grater":
+                        Reciewer.replaceIfGrater(key, worker);
+                        break;
+                    case "remove_lower_key":
+                        Reciewer.removeLowerKey(key);
+                        break;
+                    case "update":
+                        Reciewer.updateById(key, worker);
+                        break;
+                }
+
             } else {
                 if (line.contains("execute_script")) {
                     File file_new = new File(line.split(" ")[1]);
                     if (!file_new.canRead()) {
-                        throw new RootException("You do not have enough rights to read the file");
+                        System.out.println("You do not have enough rights to read the file");
                     }
                     if (st.contains(file_new)) {
                         System.out.println("Recursion to file " + file.getName() + " was skipped");
                     } else {
-                        CommandManager.startExecuting(line);
+                        try {
+                            CommandManager.startExecuting(line);
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+
                     }
                 } else {
-                    CommandManager.startExecuting(line);
+                    try {
+                        CommandManager.startExecuting(line);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             }
         }
@@ -284,8 +383,7 @@ public class Reciewer {
     }
 
 
-
-    public static void clearMap(){
+    public static void clearMap() {
         CollectionManager.getTable().clear();
         System.out.println("Map is clear");
     }
